@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surf and Weather Info for Kawaihae</title>
+    <title>Surf and Weather Info</title>
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Kaushan+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h1>Local Surf and Weather Info for Kawaihae, Hawaii</h1>
+    <h1>Surf and Weather Info</h1>
     
+    <div id="search-container">
+        <input type="text" id="beach-search" placeholder="Enter Beach Name" />
+        <button id="search-button" onclick="searchBeach()">Search</button>
+    </div>
+    <div id="beach-name" style="text-align: center; color: white; margin-top: 20px;"></div>
     <div id="surf-info">
         <h2>Surf Conditions</h2>
         <ul id="surf-list"></ul>
@@ -23,14 +28,16 @@
         <h2>Live Surf Video</h2>
         <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen src="https://video.nest.com/embedded/live/Yzug5AHbPx?autoplay=0" frameborder="0" width="720" height="576"></iframe>
     </div>
+    
     <footer style="margin-top: 30px; text-align: center; font-size: 14px; color: #555;">
         <p>Powered by:</p>
         <p>
-            <a href="https://openweathermap.org/" target="_blank" style="text-decoration: none; color: #ffffff;">OpenWeatherMap</a> &bull; 
-            <a href="https://open-meteo.com/en" target="_blank" style="text-decoration: none; color: #ffffff;">Open-Meteo</a>
+            <a href="https://openweathermap.org/" target="_blank" style="text-decoration: none; color: #007BFF;">OpenWeatherMap</a> &bull; 
+            <a href="https://open-meteo.com/en" target="_blank" style="text-decoration: none; color: #007BFF;">Open-Meteo</a>
         </p>
         <p>Gerald Newell © WDD 330</p>
     </footer>
+    
     <script src="scripts/app.js"></script>
 </body>
 </html>

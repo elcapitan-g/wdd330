@@ -77,3 +77,34 @@ a:hover, button:hover {
     max-width: 100%;
   }
 }
+/* Center the search bar */
+#search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#beach-search {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 250px;
+  margin-right: 10px;
+}
+
+#search-button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #b91313;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#search-button:hover {
+  background-color: #d54343;
+}
