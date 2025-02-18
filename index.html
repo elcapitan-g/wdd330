@@ -8,32 +8,47 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h1>Surf and Weather Info</h1>
+    <h1>Local Surf and Weather Info</h1>
     
     <div id="search-container">
         <input type="text" id="beach-search" placeholder="Enter Beach Name" />
         <button id="search-button" onclick="searchBeach()">Search</button>
     </div>
+
+    <!-- Beach name display -->
     <div id="beach-name" style="text-align: center; color: white; margin-top: 20px;"></div>
+
+    <!-- Surf conditions display -->
     <div id="surf-info">
         <h2>Surf Conditions</h2>
         <ul id="surf-list"></ul>
     </div>
         
+    <!-- Weather information display -->
     <div id="weather-info">
         <h2>Weather Information</h2>
     </div>
     
+    <!-- Live surf video -->
     <div id="video-container" style="margin-top: 30px; text-align: center;">
         <h2>Live Surf Video</h2>
         <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen src="https://video.nest.com/embedded/live/Yzug5AHbPx?autoplay=0" frameborder="0" width="720" height="576"></iframe>
     </div>
+
+    <!-- Your Searched Beaches Section -->
+    <div id="favorites-container" style="text-align: center; margin-top: 30px;">
+        <h2>Your Searched Beaches</h2>
+        <ul id="favorites-list" style="list-style-type: none; padding: 0; color: white;">
+            <!-- Favorite beaches will be listed here -->
+        </ul>
+    </div>
+
     
     <footer style="margin-top: 30px; text-align: center; font-size: 14px; color: #555;">
         <p>Powered by:</p>
         <p>
-            <a href="https://openweathermap.org/" target="_blank" style="text-decoration: none; color: #007BFF;">OpenWeatherMap</a> &bull; 
-            <a href="https://open-meteo.com/en" target="_blank" style="text-decoration: none; color: #007BFF;">Open-Meteo</a>
+            <a href="https://openweathermap.org/" target="_blank" style="text-decoration: none; color: #ffffff;">OpenWeatherMap</a> &bull; 
+            <a href="https://open-meteo.com/en" target="_blank" style="text-decoration: none; color: #ffffff;">Open-Meteo</a>
         </p>
         <p>Gerald Newell © WDD 330</p>
     </footer>
