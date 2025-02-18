@@ -1,52 +1,61 @@
-document.getElementById('fetch-data').addEventListener('click', async function() {
-    const location = document.getElementById('location').value.trim();
-  
-    if (location === "") {
-      alert("Please enter a location.");
-      return;
-    }
-  
+window.onload = async function() {
+    const weatherLocation = "Kawaihae";
+    const weatherApiKey = "897d3ae300f969c5ba83411c7202cf8f";
+    const surfApiUrl = 'https://marine-api.open-meteo.com/v1/marine?latitude=20.0354&longitude=-155.8265&hourly=wave_height,wave_direction,wave_period';
 
-    document.getElementById('surf-list').innerHTML = '';
-    document.getElementById('weather-info').innerHTML = '';
-  
     try {
-      
-      const surfResponse = await fetch(`https://api.example.com/surf?location=${location}`);
-      const surfData = await surfResponse.json();
-      
+        const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${weatherLocation}&appid=${weatherApiKey}&units=metric`);
+        const weatherData = await weatherResponse.json();
 
-      if (surfData && surfData.length > 0) {
-        const surfList = document.getElementById('surf-list');
-        surfData.forEach(surf => {
-          const listItem = document.createElement('li');
-          listItem.textContent = `Wave Height: ${surf.waveHeight} ft - Wind Speed: ${surf.windSpeed} mph`;
-          surfList.appendChild(listItem);
-        });
-      } else {
-        document.getElementById('surf-list').textContent = "No surf data available.";
-      }
-  
-      
-      const weatherResponse = await fetch(`https://api.weatherbit.io/v2.0/current?city=${location}&key=your_weatherbit_api_key`);
-      const weatherData = await weatherResponse.json();
-  
-
-      if (weatherData && weatherData.data.length > 0) {
-        const weatherInfo = document.getElementById('weather-info');
-        const weather = weatherData.data[0];
-        weatherInfo.innerHTML = `
-          <p>Temperature: ${weather.temp}°C</p>
-          <p>Humidity: ${weather.rh}%</p>
-          <p>Wind Speed: ${weather.wind_spd} m/s</p>
-          <p>Weather Description: ${weather.weather.description}</p>
-        `;
-      } else {
-        document.getElementById('weather-info').textContent = "No weather data available.";
-      }
+        if (weatherData.cod === 200) {
+            displayWeather(weatherData); 
+        } else {
+            throw new Error("Location not found");
+        }
     } catch (error) {
-      console.error('Error fetching data:', error);
-      alert('Failed to fetch data. Please try again later.');
+        console.error('Error fetching weather data:', error);
+        document.getElementById('weather-info').textContent = "Failed to fetch weather data.";
     }
-  });
-  
+
+    try {
+        const surfResponse = await fetch(surfApiUrl);
+        const surfData = await surfResponse.json();
+
+        if (surfData && surfData.hourly) {
+            displaySurfData(surfData.hourly);
+        } else {
+            throw new Error("No surf data found");
+        }
+    } catch (error) {
+        console.error('Error fetching surf data:', error);
+        document.getElementById('surf-list').textContent = "Failed to fetch surf data.";
+    }
+};
+
+function displayWeather(weather) {
+    const weatherInfo = document.getElementById('weather-info');
+    weatherInfo.innerHTML = `
+        <p>Location: ${weather.name}, ${weather.sys.country}</p>
+        <p>Temperature: ${weather.main.temp}°C</p>
+        <p>Humidity: ${weather.main.humidity}%</p>
+        <p>Wind Speed: ${weather.wind.speed} m/s</p>
+        <p>Weather: ${weather.weather[0].description}</p>
+    `;
+}
+
+function displaySurfData(surfData) {
+    const surfList = document.getElementById('surf-list');
+    const waveHeight = surfData.wave_height[0];
+    const waveDirection = surfData.wave_direction[0];
+    const wavePeriod = surfData.wave_period[0];
+
+    if (waveHeight && waveDirection && wavePeriod) {
+        surfList.innerHTML = `
+            <p>Wave Height: ${waveHeight} m</p>
+            <p>Wave Direction: ${waveDirection}°</p>
+            <p>Wave Period: ${wavePeriod} s</p>
+        `;
+    } else {
+        surfList.textContent = "No surf data available.";
+    }
+}

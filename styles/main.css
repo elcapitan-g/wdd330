@@ -1,109 +1,79 @@
+/* main.css */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;  /* Default font for body */
-    background-color: #1e1e1e; /* Dark background for contrast */
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
-  
+body {
+  font-family: 'Karla', sans-serif;
+  background-color: #1e1e1e;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
 
-  h1 {
-    color: #FF3B3F; /* Red color for header */
-    font-size: 3em;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-weight: bold;
-    font-family: 'Pacifico', cursive; /* Hawaiian style font */
-  }
-  
+h1 {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 3rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 50px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
 
-  h2 {
-    color: #FF3B3F; /* Red color */
-    font-size: 2em;
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-  
- 
-  input[type="text"] {
-    background-color: #2C2C2C; /* Dark input background */
-    color: white;
-    border: 2px solid #FF3B3F; /* Red border for inputs */
-    padding: 10px;
-    width: 250px;
-    font-size: 1em;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
-  
-  input[type="text"]:focus {
-    border-color: #FF7B7F; /* Lighten the red on focus */
-    outline: none;
-  }
-  
-  button {
-    background-color: #FF3B3F; /* Red button */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: bold;
-  }
-  
-  button:hover {
-    background-color: #FF7B7F; /* Lighter red on hover */
-  }
-  
-  button:active {
-    background-color: #FF1C1F; /* Darker red on click */
-  }
-  
+#surf-info, #weather-info, #video-container {
+  font-size: 1.2rem;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #b91313;
+  border: 2px solid #fff;
+  color: white;
+}
 
-  #weather-info, #surf-list {
-    background-color: #2C2C2C; /* Dark background for data display */
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-  }
-  
-  #weather-info p {
-    margin: 10px 0;
-    font-size: 1.2em;
-  }
-  
-  #surf-list {
-    list-style-type: none;
-  }
-  
-  #surf-list li {
-    background-color: #333; /* Slightly lighter dark background */
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    font-size: 1.1em;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  #surf-list li:hover {
-    transform: scale(1.05); /* Smooth animation when hovering */
-  }
-  
+#surf-info {
+  background-color: #b91313;
+}
 
-  @media (max-width: 768px) {
-    input[type="text"], button {
-      width: 100%; /* Full width for smaller screens */
-    }
+#weather-info {
+  background-color: #b91313;
+}
+
+#video-container {
+  background-color: #b91313;
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #fff;
+}
+
+#surf-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+a, button {
+  color: #b91313;
+  text-decoration: none;
+}
+
+a:hover, button:hover {
+  color: #fff;
+  background-color: #b91313;
+  border: 2px solid #b91313;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  #surf-info, #weather-info, #video-container {
+    max-width: 100%;
   }
-  
+}
